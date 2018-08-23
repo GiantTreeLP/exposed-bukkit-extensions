@@ -14,7 +14,7 @@ private val gson = GsonBuilder()
         .registerTypeAdapter(profilePropertySetType, ProfilePropertySetTypeAdapter)
         .create()
 
-fun Table.profileProperySet(name: String, length: Int, collate: String? = null) = registerColumn<Set<ProfileProperty>>(name, PropertySetColumnType(length, collate))
+fun Table.profilePropertySet(name: String, length: Int, collate: String? = null) = registerColumn<Set<ProfileProperty>>(name, PropertySetColumnType(length, collate))
 
 class PropertySetColumnType(length: Int, collate: String?) : VarCharColumnType(length, collate) {
     override fun nonNullValueToString(value: Any): String {
