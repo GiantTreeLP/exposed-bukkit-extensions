@@ -6,4 +6,6 @@
 [![GitHub license](https://img.shields.io/github/license/GiantTreeLP/exposed-bukkit-extensions.svg)](https://github.com/GiantTreeLP/exposed-bukkit-extensions/blob/master/LICENSE)
 [![Build Status](https://ci.groundmc.net/buildStatus/icon?job=GroundMC/exposed-bukkit-extensions/master)](https://ci.groundmc.net/job/GroundMC/job/exposed-bukkit-extensions/job/master/)
 
+[![Known Vulnerabilities](https://snyk.io/test/github/GiantTreeLP/exposed-bukkit-extensions/badge.svg?targetFile=pom.xml)](https://snyk.io/test/github/GiantTreeLP/exposed-bukkit-extensions?targetFile=pom.xml)
+
 Extensions for Kotlin Exposed for Bukkit/Paper
