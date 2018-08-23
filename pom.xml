@@ -202,6 +202,39 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.jetbrains.dokka</groupId>
+                <artifactId>dokka-maven-plugin</artifactId>
+                <version>0.9.17</version>
+                <executions>
+                    <execution>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>dokka-javadoc</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>javadocJar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sourceLinks>
+                        <link>
+                            <dir>${project.basedir}/src/main/kotlin</dir>
+                            <url>
+                                http://github.com/gianttreelp/exposed-bukkit-extensions
+                            </url>
+                        </link>
+                    </sourceLinks>
+                    <outputDir>
+                        ${project.basedir}/target/site/apidocs
+                    </outputDir>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
