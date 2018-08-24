@@ -8,7 +8,10 @@ import org.bukkit.Location
 import org.joda.time.DateTime
 
 /**
- * An adapter to serialize and deserialize [Location] objects
+ * An adapter to serialize and deserialize [Location] objects.
+ *
+ * @author GiantTree
+ * @since 1.0
  */
 object LocationTypeAdapter : TypeAdapter<Location>() {
 
@@ -42,7 +45,10 @@ object LocationTypeAdapter : TypeAdapter<Location>() {
 }
 
 /**
- * An adapter to serialize and deserialize [DateTime] objects
+ * An adapter to serialize and deserialize [DateTime] objects.
+ *
+ * @author GiantTree
+ * @since 1.0
  */
 object DateTimeAdapter : TypeAdapter<DateTime>() {
 

@@ -7,6 +7,9 @@ import com.google.gson.stream.JsonWriter
 
 /**
  * Type adapter to serialize and deserialize Sets of [ProfileProperty].
+ *
+ * @author GiantTree
+ * @since 1.0
  */
 object ProfilePropertySetTypeAdapter : TypeAdapter<Set<ProfileProperty>>() {
     override fun write(out: JsonWriter, value: Set<ProfileProperty>) {

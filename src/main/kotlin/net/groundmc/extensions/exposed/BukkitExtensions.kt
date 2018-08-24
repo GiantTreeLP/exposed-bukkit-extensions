@@ -13,8 +13,22 @@ private val gson = GsonBuilder()
         .registerTypeAdapter(DateTime::class.java, DateTimeAdapter)
         .create()
 
+/**
+ * A profile property set column to [Location]s using a
+ * varchar column.
+ *
+ * @param name the name of the column
+ */
 fun Table.location(name: String) = registerColumn<Location>(name, LocationColumnType())
 
+/**
+ * Column that stores [Location] in a varchar column of length 255.
+ *
+ * @constructor Constructs a new column to store locations in.
+ *
+ * @author GiantTree
+ * @since 1.0
+ */
 class LocationColumnType : VarCharColumnType(255) {
 
     override fun nonNullValueToString(value: Any): String {

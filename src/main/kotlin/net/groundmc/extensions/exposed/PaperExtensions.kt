@@ -8,14 +8,33 @@ import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.VarCharColumnType
 import java.lang.reflect.Type
 
-val profilePropertySetType: Type = TypeToken.getParameterized(Set::class.java, ProfileProperty::class.java).type
+private val profilePropertySetType: Type = TypeToken.getParameterized(Set::class.java, ProfileProperty::class.java).type
 
 private val gson = GsonBuilder()
         .registerTypeAdapter(profilePropertySetType, ProfilePropertySetTypeAdapter)
         .create()
 
+/**
+ * A profile property set column to store sets of [ProfileProperty] using a
+ * varchar column.
+ *
+ * @param name the name of the column
+ * @param length the length of the underlying varchar column.
+ * @param collate (optional) the collation to use for the column.
+ */
 fun Table.profilePropertySet(name: String, length: Int, collate: String? = null) = registerColumn<Set<ProfileProperty>>(name, PropertySetColumnType(length, collate))
 
+/**
+ * Column that stores `Set<ProfileProperty>`.
+ * Serializes and deserializes using Gson and the [ProfilePropertySetTypeAdapter].
+ *
+ * @constructor Creates a new [VarCharColumnType] that specifically stores Sets of [ProfileProperty]
+ * @param length the length of the underlying column in the database
+ * @param collate (optional) the collation to use for the column
+ *
+ * @author GiantTree
+ * @since 1.0
+ */
 class PropertySetColumnType(length: Int, collate: String?) : VarCharColumnType(length, collate) {
     override fun nonNullValueToString(value: Any): String {
         return when (value) {
