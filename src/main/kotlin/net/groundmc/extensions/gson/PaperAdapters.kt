@@ -39,8 +39,8 @@ object ProfilePropertySetTypeAdapter : TypeAdapter<Set<ProfileProperty>>() {
                     else -> reader.skipValue()
                 }
             }
-            set += builder.build() ?: continue
             reader.endObject()
+            set += builder() ?: continue
         }
         reader.endArray()
         return set
@@ -62,7 +62,7 @@ internal class ProfilePropertyBuilder(var name: String? = null, var value: Strin
      * @return the newly created profile property or `null`, if not all required
      * fields are set.
      */
-    fun build() = if (name != null && value != null) {
+    operator fun invoke() = if (name != null && value != null) {
         ProfileProperty(name!!, value!!, signature)
     } else {
         null
