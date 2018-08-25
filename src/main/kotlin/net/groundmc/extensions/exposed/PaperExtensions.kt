@@ -3,7 +3,6 @@ package net.groundmc.extensions.exposed
 import com.destroystokyo.paper.profile.ProfileProperty
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import net.groundmc.extensions.gson.ProfilePropertySetTypeAdapter
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.VarCharColumnType
 import java.lang.reflect.Type
@@ -11,7 +10,6 @@ import java.lang.reflect.Type
 private val profilePropertySetType: Type = TypeToken.getParameterized(Set::class.java, ProfileProperty::class.java).type
 
 private val gson = GsonBuilder()
-        .registerTypeAdapter(profilePropertySetType, ProfilePropertySetTypeAdapter)
         .create()
 
 /**
@@ -26,7 +24,7 @@ fun Table.profilePropertySet(name: String, length: Int, collate: String? = null)
 
 /**
  * Column that stores `Set<ProfileProperty>`.
- * Serializes and deserializes using Gson and the [ProfilePropertySetTypeAdapter].
+ * Serializes and deserializes using Gson.
  *
  * @constructor Creates a new [VarCharColumnType] that specifically stores Sets of [ProfileProperty]
  * @param length the length of the underlying column in the database
