@@ -1,11 +1,15 @@
 package net.groundmc.extensions.gson
 
-import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.TypeAdapter
+import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
 import org.bukkit.Location
 import org.joda.time.DateTime
+import java.lang.reflect.Type
+
+private val gson = GsonBuilder().create()
 
 /**
  * An adapter to serialize and deserialize [Location] objects.
@@ -15,6 +19,8 @@ import org.joda.time.DateTime
  */
 object LocationTypeAdapter : TypeAdapter<Location>() {
 
+    private val mapStringAnyType: Type = TypeToken.getParameterized(Map::class.java, String::class.java, Any::class.java).type
+
     /**
      * Writes a [Location] object to a [JsonWriter].
      *
@@ -23,7 +29,7 @@ object LocationTypeAdapter : TypeAdapter<Location>() {
      */
     override fun write(writer: JsonWriter, location: Location?) {
         if (location != null) {
-            writer.value(Gson().toJson(location.serialize()))
+            writer.value(gson.toJson(location.serialize()))
         } else {
             writer.nullValue()
         }
@@ -39,8 +45,7 @@ object LocationTypeAdapter : TypeAdapter<Location>() {
     override fun read(reader: JsonReader): Location? {
         val read = reader.nextString()
 
-        @Suppress("unchecked_cast")
-        return Location.deserialize(Gson().fromJson(read, Map::class.java) as Map<String, Any>)
+        return Location.deserialize(gson.fromJson<Map<String, Any>>(read, mapStringAnyType) as Map<String, Any>)
     }
 }
 
