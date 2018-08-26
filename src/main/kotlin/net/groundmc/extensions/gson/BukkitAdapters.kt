@@ -28,10 +28,9 @@ object LocationTypeAdapter : TypeAdapter<Location>() {
      * @param location the [Location] to write.
      */
     override fun write(writer: JsonWriter, location: Location?) {
-        if (location != null) {
-            writer.value(gson.toJson(location.serialize()))
-        } else {
-            writer.nullValue()
+        when {
+            location != null -> writer.value(gson.toJson(location.serialize()))
+            else -> writer.nullValue()
         }
     }
 
@@ -64,10 +63,9 @@ object DateTimeAdapter : TypeAdapter<DateTime>() {
      * @param dateTime the [DateTime] to write.
      */
     override fun write(writer: JsonWriter, dateTime: DateTime?) {
-        if (dateTime != null) {
-            writer.value(dateTime.toString())
-        } else {
-            writer.nullValue()
+        when {
+            dateTime != null -> writer.value(dateTime.toString())
+            else -> writer.nullValue()
         }
     }
 
