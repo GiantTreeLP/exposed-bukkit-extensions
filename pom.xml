@@ -210,7 +210,7 @@
                     <execution>
                         <phase>pre-site</phase>
                         <goals>
-                            <goal>javadoc</goal>
+                            <goal>dokka</goal>
                         </goals>
                     </execution>
                     <execution>
@@ -222,17 +222,42 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <skip>true</skip>
+                    <outputFormat>html</outputFormat>
                     <sourceLinks>
                         <link>
                             <dir>${project.basedir}/src/main/kotlin</dir>
                             <url>
                                 http://github.com/gianttreelp/exposed-bukkit-extensions
                             </url>
+                            <urlSuffix>#L</urlSuffix>
                         </link>
                     </sourceLinks>
                     <outputDir>
                         ${project.basedir}/target/site/apidocs
                     </outputDir>
+                    <externalDocumentationLinks>
+                        <link>
+                            <url>https://destroystokyo.com/javadocs/</url>
+                            <packageListUrl>
+                                https://hub.spigotmc.org/javadocs/spigot/package-list
+                            </packageListUrl>
+                        </link>
+                        <link>
+                            <url>https://hub.spigotmc.org/javadocs/bukkit/</url>
+                        </link>
+                        <link>
+                            <url>http://www.joda.org/joda-time/apidocs/</url>
+                        </link>
+                        <link>
+                            <url>
+                                https://static.javadoc.io/com.google.code.gson/gson/2.8.5/
+                            </url>
+                            <packageListUrl>
+                                https://static.javadoc.io/com.google.code.gson/gson/2.8.5/package-list
+                            </packageListUrl>
+                        </link>
+                    </externalDocumentationLinks>
                 </configuration>
             </plugin>
         </plugins>
