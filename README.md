@@ -12,6 +12,33 @@
 
 Extensions for Kotlin Exposed for Bukkit/Paper
 
+# Use in your project
+
+## Maven
+
+To use this library in your Maven project, simply use the following dependency 
+fragment:
+
+Dependency:
+```xml
+<dependency>
+    <groupId>com.github.gianttreelp</groupId>
+    <artifactId>bukkit-exposed-extensions</artifactId>
+    <version>1.1-SNAPSHOT</version>
+    <scope>compile</scope>
+</dependency>
+```
+
+If you are feeling adventurous, you can also use the latest snapshots.
+This requires you to setup the Sonatype snapshots repository.
+
+Repository:
+```xml
+<repository>
+    <id>ossrh</id>
+    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+</repository>
+``` 
 
 ## Examples
 
