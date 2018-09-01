@@ -44,7 +44,7 @@ object LocationTypeAdapter : TypeAdapter<Location>() {
     override fun read(reader: JsonReader): Location? {
         val read = reader.nextString()
 
-        return Location.deserialize(gson.fromJson<Map<String, Any>>(read, mapStringAnyType) as Map<String, Any>)
+        return Location.deserialize(gson.fromJson<Map<String, Any>>(read, mapStringAnyType))
     }
 }
 
