@@ -58,4 +58,11 @@ class LocationColumnType : VarCharColumnType(255) {
             else -> super.valueToString(value)
         }
     }
+
+    override fun valueToDB(value: Any?): Any? {
+        return when {
+            value != null -> notNullValueToDB(value)
+            else -> super.valueToDB(value)
+        }
+    }
 }
