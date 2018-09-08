@@ -42,30 +42,30 @@ class PropertySetColumnType(length: Int, collate: String?) : VarCharColumnType(l
     }
 
     override fun valueFromDB(value: Any): Any {
-        if (value is String) {
-            return gson.fromJson(value, profilePropertySetType)
+        return when (value) {
+            is String -> gson.fromJson(value, profilePropertySetType)
+            else -> super.valueFromDB(value)
         }
-        return super.valueFromDB(value)
     }
 
     override fun notNullValueToDB(value: Any): Any {
-        if (value is Set<*>) {
-            return gson.toJson(value)
+        return when (value) {
+            is Set<*> -> gson.toJson(value)
+            else -> super.notNullValueToDB(value)
         }
-        return super.notNullValueToDB(value)
     }
 
     override fun valueToDB(value: Any?): Any? {
-        if (value != null) {
-            return notNullValueToDB(value)
+        return when {
+            value != null -> notNullValueToDB(value)
+            else -> super.valueToDB(value)
         }
-        return super.valueToDB(value)
     }
 
     override fun valueToString(value: Any?): String {
-        if (value != null) {
-            nonNullValueToString(value)
+        return when {
+            value != null -> nonNullValueToString(value)
+            else -> super.valueToString(value)
         }
-        return super.valueToString(value)
     }
 }
