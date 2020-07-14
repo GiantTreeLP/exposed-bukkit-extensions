@@ -24,7 +24,7 @@ Dependency:
 <dependency>
     <groupId>com.github.gianttreelp</groupId>
     <artifactId>bukkit-exposed-extensions</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
     <scope>compile</scope>
 </dependency>
 ```
