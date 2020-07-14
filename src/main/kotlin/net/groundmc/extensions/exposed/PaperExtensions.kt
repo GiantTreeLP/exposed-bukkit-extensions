@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.VarCharColumnType
 import java.lang.reflect.Type
 
-private val profilePropertySetType: Type = TypeToken.getParameterized(Set::class.java, ProfileProperty::class.java).type
+private val profilePropertySetType: Type = object : TypeToken<Set<ProfileProperty>>() {}.type
 
 private val gson = GsonBuilder()
         .create()
@@ -30,7 +30,6 @@ fun Table.profilePropertySet(name: String, length: Int, collate: String? = null)
  * @param length the length of the underlying column in the database
  * @param collate (optional) the collation to use for the column
  *
- * @author GiantTree
  * @since 1.0
  */
 class PropertySetColumnType(length: Int, collate: String?) : VarCharColumnType(length, collate) {
