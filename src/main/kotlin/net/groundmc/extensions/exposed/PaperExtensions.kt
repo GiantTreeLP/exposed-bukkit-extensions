@@ -23,7 +23,7 @@ private val gson = GsonBuilder()
 fun Table.profilePropertySet(name: String, length: Int, collate: String? = null) = registerColumn<Set<ProfileProperty>>(name, PropertySetColumnType(length, collate))
 
 /**
- * Column that stores `Set<ProfileProperty>`.
+ * Column that stores `Set&lt;ProfileProperty&gt;`.
  * Serializes and deserializes using Gson.
  *
  * @constructor Creates a new [VarCharColumnType] that specifically stores Sets of [ProfileProperty]

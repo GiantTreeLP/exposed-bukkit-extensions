@@ -203,15 +203,17 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <skip>true</skip>
+                    <skip>false</skip>
+                    <cacheRoot>default</cacheRoot>
+                    <jdkVersion>8</jdkVersion>
                     <outputFormat>html</outputFormat>
                     <sourceLinks>
                         <link>
-                            <dir>${project.basedir}/src/main/kotlin</dir>
+                            <path>/src/main/kotlin</path>
                             <url>
                                 http://github.com/gianttreelp/exposed-bukkit-extensions
                             </url>
-                            <urlSuffix>#L</urlSuffix>
+                            <lineSuffix>#L</lineSuffix>
                         </link>
                     </sourceLinks>
                     <outputDir>
@@ -219,16 +221,7 @@
                     </outputDir>
                     <externalDocumentationLinks>
                         <link>
-                            <url>https://destroystokyo.com/javadocs/</url>
-                            <packageListUrl>
-                                https://hub.spigotmc.org/javadocs/spigot/package-list
-                            </packageListUrl>
-                        </link>
-                        <link>
-                            <url>https://hub.spigotmc.org/javadocs/bukkit/</url>
-                        </link>
-                        <link>
-                            <url>http://www.joda.org/joda-time/apidocs/</url>
+                            <url>https://papermc.io/javadocs/paper/1.12/</url>
                         </link>
                         <link>
                             <url>
