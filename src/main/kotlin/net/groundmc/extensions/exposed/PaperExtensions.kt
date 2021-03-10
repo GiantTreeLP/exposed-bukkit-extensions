@@ -10,7 +10,7 @@ import java.lang.reflect.Type
 private val profilePropertySetType: Type = object : TypeToken<Set<ProfileProperty>>() {}.type
 
 private val gson = GsonBuilder()
-        .create()
+    .create()
 
 /**
  * A profile property set column to store sets of [ProfileProperty] using a
@@ -20,10 +20,11 @@ private val gson = GsonBuilder()
  * @param length the length of the underlying varchar column.
  * @param collate (optional) the collation to use for the column.
  */
-fun Table.profilePropertySet(name: String, length: Int, collate: String? = null) = registerColumn<Set<ProfileProperty>>(name, PropertySetColumnType(length, collate))
+fun Table.profilePropertySet(name: String, length: Int, collate: String? = null) =
+    registerColumn<Set<ProfileProperty>>(name, PropertySetColumnType(length, collate))
 
 /**
- * Column that stores `Set&lt;ProfileProperty&gt;`.
+ * Column that stores `Set<ProfileProperty>`.
  * Serializes and deserializes using Gson.
  *
  * @constructor Creates a new [VarCharColumnType] that specifically stores Sets of [ProfileProperty]
